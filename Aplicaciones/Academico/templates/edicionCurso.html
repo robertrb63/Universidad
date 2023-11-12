@@ -1,0 +1,56 @@
+{% extends "./base.html" %}
+
+{% block title %} Gestion de Cursos{% endblock %}
+
+{% block body%}
+<div class="row">
+    <div class="col-md-4 offser-md-4">
+        <h2>EDICION DE PARROQUIAS</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editarCurso/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtCodigo" name="txtCodigo" class="form-control" placeholder="Código" minlength="5" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtPoblacion" name="txtPoblacion" class="form-control" placeholder="Poblacion" minlength="20" maxlength="20" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtTelparroquia" name="txtTelparroquia" class="form-control" placeholder="Telefono"  minlength="9" maxlength="9" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre Párroco"  maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtApellidos" name="txtApellidos"  placeholder="Apellidos Párroco" class="form-control" maxlength="50" required>
+                    </div>               
+                    <div class="form-group">
+                        <input type="text" id="txtTelparroco" name="txtTelparroco" class="form-control"  placeholder="Tel Párroco"  minlength="9" maxlength="9" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtEmailparroco" name="txtEmailparroco" class="form-control"  placeholder="Email Párroco"   maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtLaico" name="txtEmaillaico" class="form-control" placeholder="Laico Encargado"   maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtTelLaico" name="txtTellaico" class="form-control"  placeholder="Tel Laico"   minlength="9" maxlength="9" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtunidadpastoral" name="txtUnidadpastoral" class="form-control" placeholder="Unidad Pastoral"  maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtEncargadoUnidad" name="txtEncargadoUnidad" class="form-control" placeholder="Encargado Unidad"  maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtTelUnidad" name="txtTelunidad" class="form-control" placeholder="Tel Unidad"   minlength="9" maxlength="9" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>                
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

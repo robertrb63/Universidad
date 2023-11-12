@@ -1,0 +1,115 @@
+{% extends "./base.html" %}
+
+{% block title %} Gestion de Cursos{% endblock %}
+
+{% block body%}
+<div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-2 col-xl-2"> 
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-dismissible alert-success">
+        <strong class="text-dark">{{ message }}</strong>
+        </div>
+        {% endfor %}
+        {% endif %}   
+    <h2>GESTION DE DATOS</h2>
+    <div class="card">
+        <div class="card-body">
+            <form action="/registrarCurso/" method="POST">{% csrf_token %}
+                <div class="form-group">
+                    <input type="text" id="txtCodigo" name="txtCodigo" class="form-control" placeholder="Código" minlength="5" maxlength="5" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtPoblacion" name="txtPoblacion" class="form-control" placeholder="Poblacion" minlength="20" maxlength="20" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtTelparroquia" name="txtTelparroquia" class="form-control" placeholder="Telefono"  minlength="9" maxlength="9" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtNombre" name="txtNombre" class="form-control" placeholder="Nombre Párroco"  maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtApellidos" name="txtApellidos"  placeholder="Apellidos Párroco" class="form-control" maxlength="50" required>
+                </div>               
+                <div class="form-group">
+                    <input type="text" id="txtTelparroco" name="txtTelparroco" class="form-control"  placeholder="Tel Párroco"  minlength="9" maxlength="9" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtEmailparroco" name="txtEmailparroco" class="form-control"  placeholder="Email Párroco"   maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtLaico" name="txtEmaillaico" class="form-control" placeholder="Laico Encargado"   maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtTelLaico" name="txtTellaico" class="form-control"  placeholder="Tel Laico"   minlength="9" maxlength="9" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtunidadpastoral" name="txtUnidadpastoral" class="form-control" placeholder="Unidad Pastoral"  maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtEncargadoUnidad" name="txtEncargadoUnidad" class="form-control" placeholder="Encargado Unidad"  maxlength="50" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="txtTelUnidad" name="txtTelunidad" class="form-control" placeholder="Tel Unidad"   minlength="9" maxlength="9" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                </div>                
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="col-sm-12 col-md-8 col-lg-10 col-xl-10">
+        <h1>RESPONSABLES DE LAS PARROQUIAS</h1>
+        <div class="table-resposive py-2">
+            <table class="table table-striped">
+                <head>
+                    <tr>
+                        <th>#</th>
+                        <th>Codigo</th>
+                        <th>Poblacion</th>
+                        <th>Telparroquia</th>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Telparroco</th>
+                        <th>Emailparroco</th>
+                        <th>Laico</th>
+                        <th>Tellaico</th>
+                        <th>Unidad Pastoral</th>
+                        <th>Encargado Unidad</th>
+                        <th>Tel Encargado Unidad</th>
+                        <th>Arciprestazgo</th>
+                        <th>Arcipreste</th>
+                        <th>TelArcipreste</th>
+                        <th colspan="2">Opciones</th>
+                    </tr>
+                </head>
+                <tbody>
+                    {% for c in cursos%}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td>{{c.codigo}}</td>
+                        <td>{{c.poblacion}}</td>
+                        <td>{{c.telparroquia}}</td>
+                        <td>{{c.nombre}}</td>
+                        <td>{{c.apellidos}}</td>
+                        <td>{{c.telparroco}}</td>
+                        <td>{{c.emailparroco}}</td>
+                        <td>{{c.laico}}</td>
+                        <td>{{c.tellaico}}</td>
+                        <td>{{c.unidadpastoral}}</td>
+                        <td>{{c.encargadounidad}}</td>
+                        <td>{{c.telunidadpastoral}}</td>
+                        <td>{{c.arciprestazgo}}</td>
+                        <td>{{c.arcipreste}}</td>
+                        <td>{{c.telarcipreste}}</td>
+                        <td><a href="edicionCurso/{{c.poblacion}}" class="btn btn-info">Editar</a></td>
+                        <td><a href="eliminarCurso/{{c.poblacion}}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>      
+    </div>
+</div>
+{% endblock%}
